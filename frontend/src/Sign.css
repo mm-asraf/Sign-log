@@ -1,0 +1,60 @@
+.signup {
+  width: 400px;
+  aspect-ratio: 1/1;
+  box-shadow: 0 0 28px 4px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.signup > .inner_signup > input {
+  width: 80%;
+  height: 34px;
+  margin: 5px;
+  padding: 2px;
+}
+
+.signup > button {
+  width: 80%;
+  height: 34px;
+  margin: 5px;
+  background-color: rgb(220, 220, 250);
+  outline: none;
+  cursor: pointer;
+  border: 1.5px solid #bbb;
+}
+
+/* login */
+.login {
+  width: 400px;
+  height: 400px;
+  box-shadow: 0 0 28px 4px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.login > .inner_login > input {
+  width: 80%;
+  height: 34px;
+  margin: 5px;
+  padding: 2px;
+}
+
+.login > button {
+  width: 80%;
+  height: 34px;
+  margin: 5px;
+  background-color: rgb(220, 220, 250);
+  outline: none;
+  cursor: pointer;
+  border: 1.5px solid #bbb;
+}
+
+.login > button > .link,
+.signup > button > .link {
+  text-decoration: none;
+  list-style-type: none;
+}

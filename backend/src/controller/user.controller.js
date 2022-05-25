@@ -54,37 +54,7 @@ router.post(
 router.post(
   "/login",
 
-  body("email")
-    .custom(async (value) => {
-      const isEmail = /^\w+@[a-zA-z_]+?\.[a-zA-Z]{2,20}$/.test(value);
-      const userEmail = await User.findOne({ email: value }).lean().exec();
-
-      if (!isEmail) {
-        throw new Error("required and should be a valid email");
-      }
-      if (userEmail) {
-        throw new Error("email is already exist");
-      }
-      return true;
-    })
-    .notEmpty(),
-
-  body("password")
-    .notEmpty()
-    .isLength(10)
-    .withMessage(" required and should be exactly 10 numbers"),
-
   async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      let newerrors = errors.array().map(({ msg, param, location }) => {
-        return {
-          [param]: msg,
-        };
-      });
-      return res.status(400).json({ errors: newerrors });
-    }
-
     try {
       const user = await User.findOne({
         email: req.body.email,
@@ -93,12 +63,10 @@ router.post(
       });
 
       if (!user) {
-        return res
-          .status(401)
-          .json({
-            status: "failed",
-            message: "your email password is not correct",
-          });
+        return res.status(401).json({
+          status: "failed",
+          message: "your email password is not correct",
+        });
       }
 
       return res.status(201).send(user);
